@@ -145,8 +145,8 @@ open class L10n {
 
      - returns: A localized plural version of the string designated by `key`. This method returns `key` when `key` not found or `arg` is not a number .
      */
-    open func plural(for key: String, resource: String? = nil, arg: CVarArg) -> String {
-        guard let number = arg as? NSNumber else {
+    open func plural(for key: String, resource: String? = nil, number: Int, args: [CVarArg]) -> String {
+        guard let number = number as? NSNumber else {
             self.logger?.info("L10n - Argument \(key.debugDescription) is not a number.")
             return key
         }
@@ -159,7 +159,7 @@ open class L10n {
             self.logger?.info("L10n - Key \(key.debugDescription) does not support plural for \(self.language.debugDescription).")
             return key
         }
-        return self.string(format: format!, arg)
+        return self.string(format: format!, args: args)
     }
 
     /**

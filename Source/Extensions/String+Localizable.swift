@@ -65,7 +65,7 @@ extension String: Localizable {
 
      - returns: A localized plural version of the string designated by `self` or `self` if not found.
      */
-    public func l10n(_ instance: L10n = .shared, resource: String? = nil, arg: CVarArg) -> String {
-        return instance.plural(for: self, resource: resource, arg: arg)
+    public func l10n(_ instance: L10n = .shared, resource: String? = nil, number: Int, args: [CVarArg]) -> String {
+        return instance.plural(for: self, resource: resource, number: number, args: args)
     }
 }
